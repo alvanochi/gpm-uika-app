@@ -3,6 +3,7 @@ package com.uika.gugusanpenjaminanmutu
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.uika.gugusanpenjaminanmutu.common.UiState
 import com.uika.gugusanpenjaminanmutu.data.GugusanRepository
@@ -50,6 +51,15 @@ class GugusanViewModel(private val repository: GugusanRepository) : ViewModel() 
                 _listDosen.value.filter { it.name.contains(newQuery, ignoreCase = true) }
             }
     }
+}
 
-
+class ViewModelFactory(private val repository: GugusanRepository) :
+    ViewModelProvider.NewInstanceFactory() {
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(GugusanViewModel::class.java)) {
+            return GugusanViewModel(repository) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
+    }
 }

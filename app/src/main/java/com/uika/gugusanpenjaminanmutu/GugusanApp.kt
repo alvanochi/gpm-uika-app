@@ -6,13 +6,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.uika.gugusanpenjaminanmutu.common.UiState
-import com.uika.gugusanpenjaminanmutu.di.Injection
+import com.uika.gugusanpenjaminanmutu.data.GugusanRepository
 import com.uika.gugusanpenjaminanmutu.ui.components.TextEmpty
 import com.uika.gugusanpenjaminanmutu.ui.screen.HomeScreen
 
 @Composable
 fun GugusanApp(
-    viewModel: GugusanViewModel = viewModel(factory = ViewModelFactory(Injection.provideRepository())),
+    viewModel: GugusanViewModel = viewModel(factory = ViewModelFactory(GugusanRepository())),
 ){
     val query by viewModel.query
     val listDosen by viewModel.listDosenQuery.collectAsState()

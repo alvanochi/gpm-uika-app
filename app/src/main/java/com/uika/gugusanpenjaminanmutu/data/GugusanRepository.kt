@@ -21,17 +21,4 @@ class GugusanRepository {
             }
         }
     }
-
-    companion object {
-        @Volatile
-        private var instance: GugusanRepository? = null
-
-        fun getInstance(): GugusanRepository =
-            instance ?: synchronized(this) {
-                GugusanRepository().apply {
-                    instance = this
-                }
-            }
-    }
-
 }
