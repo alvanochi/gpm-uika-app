@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Gugusan Penjaminan Mutu</string>
+    <string name="placeholder_search">Cari nama dosen</string>
+    <string name="data_empty">Data yang kamu cari belum ada nih :(</string>
+</resources>
